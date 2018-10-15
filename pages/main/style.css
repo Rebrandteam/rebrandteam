@@ -1,0 +1,24 @@
+.main {
+  display: none;
+  width: 85%;
+  max-width: 1200px;
+  height: 80vh;
+  max-height: 750px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.main img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1.6s;
+}
+.main img[data-src] {
+  filter: blur(1vw);
+}
+.main img.show {
+  opacity: 1;
+}

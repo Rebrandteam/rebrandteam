@@ -4,12 +4,8 @@
 }
 body {
   width: 100%;
-  min-height: 100vh;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   background-color: black;
   color: Gainsboro;
   font-size: calc(1.5vh + 1.5vw);
@@ -24,17 +20,16 @@ header {
   top: 0;
   left: 0;
   background-color: rgb(20, 20, 20);
-  font-size: calc(1.5vh + 1.5vw);
-  font-family: serif;
   z-index: 1;
 }
-header > div {
+header div {
+  display: flex;
   width: calc(100%/3);
   height: 100%;
   align-items: center;
-  justify-content: space-around;
-  display: flex;
+  justify-content: center;
   transition: background-color 0.4s linear;
+  cursor: pointer;
 }
 header > div:hover {
   background-color: rgb(10, 10 ,10);
@@ -45,23 +40,28 @@ header > div:hover {
 header img {
   height: 50%;
 }
-.btn-menu {
-  height: 50%;
-  width: 100%;
-  background: url(./icons/menu.png) center/contain  no-repeat;
-}
-.btn-close {
-//  background: url(./icons/close2.png) center/contain  no-repeat;
-  background-image: url(./icons/close2.png);
-}
 
 main {
   display: flex;
   width: 100%;
   min-height: calc(100vh - 12vh);
-  margin-top: 12vh;
+  padding-top: 12vh;
   justify-content: center;
   align-items: center;
+}
+main > div.visible {
+  display: flex;
+}
+
+#close {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#close.none {
+  display: none;
 }
 
 .menu {
@@ -72,32 +72,48 @@ main {
   left: 0;
   top: 12vh;
   justify-content: center;
-  align-items: center;
   background-color: rgba(60, 60, 60, 0.9);
-  cursor: default;
-  transition: transform 0.4s linear;
 }
-.menu-hide {
+.left-hide {
   transform: translateX(-100%);
+}
+
+.menu-content div {
+  display: flex;
+  width: 100%;
+  border-bottom: 2px solid rgb(40, 40, 40);
+  justify-content: center;
+  transition:
+    transform 0.5s linear,
+    color 0.5s linear;
+  cursor: pointer;
+}
+.menu-content div:hover {
+  color: rgb(20, 20, 20);
+  transform: scale(1.2);
+}
+
+.rbrnd span:nth-child(odd) {
+  color: rgb(230, 111, 29);
+}
+.rbrnd span:nth-child(2) {
+  color: rgb(20, 20, 20);
 }
 
 .menu-call {
   display: flex;
   width: calc(100%/3);
   position: fixed;
-//  left: calc(100%/1.5);
   right: 0;
   top: 12vh;
   justify-content: center;
   align-items: center;
-  cursor: default;
-  transform-origin: top;
   transition: transform 0.4s linear;
 }
 .btn-call-active {
   background-color: rgb(10, 10, 10);
 }
-.menu-call-hide {
+.top-hide {
   transform: translateY(-100%);
 }
 .menu-call div {
@@ -108,7 +124,7 @@ main {
   color: lightsteelblue;
   font-size: calc(1.2vh + 1.2vw);
   text-decoration: none;
-  line-height: 2;
+  line-height: 3;
   text-shadow:
     1px 1px 1px black,
     -1px -1px 1px black,
@@ -123,34 +139,17 @@ main {
   justify-content: space-around;
   align-items: center;
 }
-.menu-content div {
-  display: flex;
-  width: 100%;
-  border-bottom: 2px solid rgb(40, 40, 40);
-  justify-content: center;
-  transition:
-    transform 0.5s linear,
-    color 0.5s linear;
-}
-.menu-content div:hover {
-  color: rgb(20, 20, 20);
-  transform: scale(1.2);
-}
-
-.rbrnd span:nth-child(odd) {
-  color: rgb(230, 111, 29);
-}
-.rbrnd span:nth-child(2) {
-  color: rgb(20, 20, 20);
-}
 
 .load {
   width: 100vw;
   height: 100vh;
+  left: 0;
+  top: 0;
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: black;
   transition: opacity 1s linear;
+  z-index: 999;
 }
